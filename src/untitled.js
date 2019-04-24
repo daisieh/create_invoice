@@ -3,6 +3,7 @@
   var report = api.run("this.get_detailed_report", {start_date: params.start_date, end_date: params.end_date});
   var table = [['"Project Name"', '"Task Name"', '"Notes"', '"Time Spent"', '"Date"', '"Billable Status"', '"Staff Name"', '"Email"']];
   var total = 0;
+  var total_duration = 0;
   for (var i in report) {
     total += report[i].billable;
     var row = [];
@@ -10,6 +11,7 @@
     row.push('"'+report[i].project+'"');
     row.push('"'+report[i].description+'"');
     var duration = moment.duration(report[i].dur);
+    total_duration += duration;
     var min = duration.minutes();
     if (String(min).length < 2) {
       min = "0" + String(min);
@@ -24,6 +26,7 @@
     table.push(row);
   }
   console.log("total $" + total.toFixed(2));
+  console.log("total duration " + total_duration);
   
   var csv = "";
   for (var i in table) {
