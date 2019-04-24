@@ -6,13 +6,21 @@
         "alias": "toggl"
       }],
       "operations": [{
-        "id": "hello_world",
-        "description": "Returns \"Hello, world\" in different languages",
-        "function": {
-          "js": "hello_world.js"
-        },
-        "access": {
-          "requireUser": true
+        "id": "get_my_workspace_id",
+        "tql": {
+          "tql": "SELECT id FROM toggl.list_workspaces LIMIT 1\nEXPAND BY id\n\n/*\n * For sample code and reference material, visit\n * https://docs.transposit.com/get-started/sql-quickstart\n */"
+        }
+      }, {
+        "id": "get_detailed_report",
+        "tql": {
+          "parameters": [{
+            "name": "start_date",
+            "type": "STRING"
+          }, {
+            "name": "end_date",
+            "type": "STRING"
+          }],
+          "tql": "SELECT * FROM toggl.get_detailed_report\n  WHERE workspace_id IN (SELECT id from toggl.list_workspaces LIMIT 1)\n  AND user_agent=@start_date\n  AND since=@end_date\n"
         }
       }],
       "javascriptAPIVersion": "3",
