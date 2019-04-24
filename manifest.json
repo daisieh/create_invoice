@@ -44,11 +44,6 @@
           }],
           "js": "save_timesheet.js"
         }
-      }, {
-        "id": "get_current_user_data",
-        "tql": {
-          "tql": "SELECT * FROM toggl.get_current_user_data\n"
-        }
       }],
       "javascriptAPIVersion": "3",
       "source": "src"
