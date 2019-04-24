@@ -35,7 +35,6 @@
   }
   
   api.run("this.save_timesheet", {filename: params.end_date+ ".csv", content: csv});
-  return table;
 }
 
 /*
