@@ -32,6 +32,18 @@
           }],
           "js": "untitled.js"
         }
+      }, {
+        "id": "save_timesheet",
+        "function": {
+          "parameters": [{
+            "name": "filename",
+            "type": "STRING"
+          }, {
+            "name": "content",
+            "type": "STRING"
+          }],
+          "js": "save_timesheet.js"
+        }
       }],
       "javascriptAPIVersion": "3",
       "source": "src"
