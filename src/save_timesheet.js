@@ -16,14 +16,14 @@
                sha: gitBlob.sha,
                branch: "master"
              };
-    api.run("github.add_file_to_repo", {owner: params.owner, path: raw_file, repo: raw_repo, $body: body});
+    api.run("github.add_file_to_repo", {owner: owner[0].login, path: raw_file, repo: raw_repo, $body: body});
   } catch(err) {
     var body = { committer: {name: owner[0].name, email: owner[0].email},
                message: "timesheet",
                content: base64,
                branch: "master"
              };
-    api.run("github.add_file_to_repo", {owner: params.owner, path: raw_file, repo: raw_repo, $body: body});
+    api.run("github.add_file_to_repo", {owner: owner[0].login, path: raw_file, repo: raw_repo, $body: body});
   }
   
   return params.content;
