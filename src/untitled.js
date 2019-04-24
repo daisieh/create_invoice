@@ -1,5 +1,6 @@
 (params) => {
   var moment = require('moment.js');
+  var user = api.run("toggl.get_current_user_data")[0];
   var report = api.run("this.get_detailed_report", {start_date: params.start_date, end_date: params.end_date});
   var table = [['"Project Name"', '"Task Name"', '"Notes"', '"Time Spent"', '"Date"', '"Billable Status"', '"Staff Name"', '"Email"']];
   var total = 0;
@@ -21,8 +22,8 @@
     var billable = "Non Billable";
     if (report[i].is_billable) { billable = "Billable"; }
     row.push('"'+billable+'"');
-    row.push('"'+report[i].user+'"');
-    row.push('"daisieh@gmail.com"');
+    row.push('"'+user.data.fullname+'"');
+    row.push('"'+user.data.email+'"');
     table.push(row);
   }
   console.log("total $" + total.toFixed(2));
@@ -34,6 +35,7 @@
   }
   
   api.run("this.save_timesheet", {filename: params.end_date+ ".csv", content: csv});
+  return table;
 }
 
 /*
