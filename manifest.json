@@ -47,6 +47,7 @@
       }],
       "javascriptAPIVersion": "3",
       "source": "src"
-    }
+    },
+    "description": "Create a timesheet from Toggl and save to Github"
   }
 }
