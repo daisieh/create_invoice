@@ -4,6 +4,9 @@
       "dependencies": [{
         "name": "transposit/toggl:latest",
         "alias": "toggl"
+      }, {
+        "name": "transposit/github:v3.*.*",
+        "alias": "github"
       }],
       "operations": [{
         "id": "get_detailed_report",
