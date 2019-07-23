@@ -50,15 +50,15 @@
     </div>
   </div>
   <script>
+    $("#loading").hide();
+    $("#failure").hide();
+    $("#success").hide();
       $("#createForm").submit(function(event) {
       event.preventDefault();
-
 
       $("#failure").hide();
       $("#success").hide();
       $("#success").empty();
-        console.log("hi");
-
 
       transposit.runOperation("create_timesheet_csv", { start_date: $("#startDate").val(), end_date: $("#endDate").val() })
         .then(function (response) {
