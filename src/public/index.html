@@ -26,11 +26,11 @@
     <form id="createForm" class="form-inline">
       <div class="form-group mr-3">
         <label for="startDate" class="sr-only">Start Date</label>
-        <input type="text" class="form-control" id="startDate">
+        <input type="text" class="form-control" id="startDate" placeholder="Start Date">
       </div>
       <div class="form-group mr-3">
         <label for="endDate" class="sr-only">End Date</label>
-        <input type="text" class="form-control" id="endDate">
+        <input type="text" class="form-control" id="endDate" placeholder="End Date">
       </div>
       <button type="submit" class="btn btn-primary">Create</button>
     </form>
@@ -51,6 +51,7 @@
   </div>
   <script>
       $("#createForm").submit(function(event) {
+        console.log("hi");
       event.preventDefault();
 
       $("#failure").hide();
@@ -74,41 +75,6 @@
           $("#failure").show();
         });
     });
-
-
-    transposit.runOperation("hello_world")
-      .then((response) => {
-        if (response.status !== "SUCCESS") {
-          throw response;
-        }
-
-        const results = response.result.results;
-
-        if (results.length === 0) {
-          $("#results").text("None");
-        } else {
-          const resultsHtml = $("<ul>").addClass("list-group");
-          for (const result of results) {
-            resultsHtml.append(
-                $("<li>").addClass("list-group-item").text(result.message)
-            );
-          }
-          $("#results").append(resultsHtml);
-        }
-
-        $("#loading").hide();
-        $("#success").show();
-      })
-      .catch((response) => {
-        if (response.requestId) {
-          console.log(`Experienced an error running an operation! View the debug logs here: ${host}/t/${maintainer}/${applicationName}/monitor/${response.requestId}`);
-        } else {
-          console.log(`The operation did not run at all. Try again, or check the deployment configurations if the problem persists: ${host}/t/${maintainer}/${applicationName}/deploy`);
-        }
-
-        $("#loading").hide();
-        $("#failure").show();
-      });
   </script>
 </body>
 </html>
