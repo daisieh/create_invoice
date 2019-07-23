@@ -51,12 +51,12 @@
   </div>
   <script>
       $("#createForm").submit(function(event) {
-        console.log("hi");
-      event.preventDefault();
 
       $("#failure").hide();
       $("#success").hide();
       $("#success").empty();
+        console.log("hi");
+
 
       transposit.runOperation("create_timesheet_csv", { start_date: $("#startDate").val(), end_date: $("#endDate").val() })
         .then(function (response) {
