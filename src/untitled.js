@@ -1,7 +1,8 @@
 (params) => {
   var moment = require('moment.js');
   var user = api.run("toggl.get_current_user_data")[0];
-  var report = api.run("this.get_detailed_report", {start_date: params.start_date, end_date: params.end_date});
+  var dates = {start: moment(params.start_date), end: moment(params.end_date)};
+  var report = api.run("this.get_detailed_report", {start_date: dates.start.format('YYYY-MM-DD'), end_date: dates.end.format('YYYY-MM-DD')});
   var table = [['"Project Name"', '"Task Name"', '"Notes"', '"Time Spent"', '"Date"', '"Billable Status"', '"Staff Name"', '"Email"']];
   var total = 0;
   var total_duration = 0;
@@ -34,7 +35,7 @@
     csv += table[i].join() + "\n";
   }
   
-  api.run("this.save_timesheet", {filename: params.end_date+ ".csv", content: csv});
+  return api.run("this.save_timesheet", {filename: dates.end.format('YYYY-MM-DD') + ".csv", content: csv})[0].download_url;
 }
 
 /*

@@ -24,6 +24,8 @@
     api.run("github.add_file_to_repo", {owner: owner[0].login, path: raw_file, repo: raw_repo, $body: body});
   }
   
-  return params.content;
+  // get results
+  var result = api.run("github.get_files_in_repo", {owner: owner[0].login, repo: raw_repo, path: raw_file, ref: "master"})[0];
+  return result;
 }
 

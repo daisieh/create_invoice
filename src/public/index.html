@@ -22,19 +22,18 @@
 </head>
 <body class="bg-light">
   <div class="container mt-3 mt-md-5">
-    <svg class="float-md-right ml-md-3" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
-      <g fill-rule="nonzero" fill="none">
-        <circle fill="#94D8E8" cx="32" cy="32" r="32"/>
-        <path d="M32 54V30" stroke="#89695E" stroke-width="4"/>
-        <circle fill="#26B25E" cx="32" cy="24" r="12"/>
-        <path d="M32 46l9-9" stroke="#89695E" stroke-width="4"/>
-        <circle fill="#1D8A48" cx="42" cy="36" r="6"/>
-      </g>
-    </svg>
-    <h1>Hello, world!</h1>
-    <p class="text-secondary">
-      There's lots of ways to say "Hello, world"!
-    </p>
+    <h3>Create an invoice:</h3>
+    <form id="createForm" class="form-inline">
+      <div class="form-group mr-3">
+        <label for="startDate" class="sr-only">Start Date</label>
+        <input type="text" class="form-control" id="startDate">
+      </div>
+      <div class="form-group mr-3">
+        <label for="endDate" class="sr-only">End Date</label>
+        <input type="text" class="form-control" id="endDate">
+      </div>
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form>
   </div>
   <div class="container mt-3 mt-md-5">
     <div id="loading" class="alert alert-warning" role="alert">
@@ -51,8 +50,31 @@
     </div>
   </div>
   <script>
-    $("#failure").hide();
-    $("#success").hide();
+      $("#createForm").submit(function(event) {
+      event.preventDefault();
+
+      $("#failure").hide();
+      $("#success").hide();
+      $("#success").empty();
+
+      transposit.runOperation("create_timesheet_csv", { start_date: $("#startDate").val(), end_date: $("#endDate").val() })
+        .then(function (response) {
+		  console.log(response);
+          $("#loading").hide();
+          if (response.status == "ERROR") {
+            $("#failure").show();            
+          } else {
+            $("#success").html('<div class="card-body">Success!</div>');
+            $("#success").show();
+          }
+        })
+        .catch(function (response) {
+          console.log(response);
+          $("#loading").hide();
+          $("#failure").show();
+        });
+    });
+
 
     transposit.runOperation("hello_world")
       .then((response) => {
