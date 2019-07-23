@@ -48,6 +48,9 @@
       "dataConnections": [{
         "ref": "toggl.raw",
         "requireConsumerSignin": true
+      }, {
+        "ref": "github.raw",
+        "requireConsumerSignin": true
       }],
       "javascriptAPIVersion": "3",
       "source": "src"
