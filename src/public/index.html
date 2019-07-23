@@ -64,7 +64,7 @@
           if (response.status == "ERROR") {
             $("#failure").show();            
           } else {
-            $("#success").html('<div class="card-body">Success!</div>');
+            $("#success").html('<a href="' + response.result + '">'+ 'response.result' + '</a>');
             $("#success").show();
           }
         })
