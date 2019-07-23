@@ -45,6 +45,10 @@
           "js": "save_timesheet.js"
         }
       }],
+      "dataConnections": [{
+        "ref": "toggl.raw",
+        "requireConsumerSignin": true
+      }],
       "javascriptAPIVersion": "3",
       "source": "src"
     },
