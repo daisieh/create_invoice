@@ -49,12 +49,12 @@
     </div>
   </div>
   <script>
-    $("#loading").hide();
     $("#failure").hide();
     $("#success").hide();
       $("#createForm").submit(function(event) {
       event.preventDefault();
 
+      $("#loading").show();
       $("#failure").hide();
       $("#success").hide();
       $("#success").empty();
