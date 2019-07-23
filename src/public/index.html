@@ -67,7 +67,7 @@
           if (response.status == "ERROR") {
             $("#failure").show();            
           } else {
-            $("#success").html('<a href="' + response.result + '">'+ 'response.result' + '</a>');
+            $("#success").html('<a href="' + response.result.results[0] + '">'+ response.result.results[0] + '</a>');
             $("#success").show();
           }
         })
