@@ -31,6 +31,9 @@
             "type": "STRING"
           }],
           "js": "untitled.js"
+        },
+        "access": {
+          "requireUser": true
         }
       }, {
         "id": "save_timesheet",
