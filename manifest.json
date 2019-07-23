@@ -52,7 +52,9 @@
         "description": "Use this toggl account for data"
       }, {
         "ref": "github.raw",
-        "requireConsumerSignin": true
+        "requireConsumerSignin": true,
+        "title": "Github",
+        "description": "Save timesheet to the \"timesheets\" repo at this owner"
       }],
       "javascriptAPIVersion": "3",
       "source": "src"
