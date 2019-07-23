@@ -51,6 +51,8 @@
   </div>
   <script>
       $("#createForm").submit(function(event) {
+      event.preventDefault();
+
 
       $("#failure").hide();
       $("#success").hide();
