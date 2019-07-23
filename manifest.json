@@ -47,7 +47,9 @@
       }],
       "dataConnections": [{
         "ref": "toggl.raw",
-        "requireConsumerSignin": true
+        "requireConsumerSignin": true,
+        "title": "Toggl",
+        "description": "Use this toggl account for data"
       }, {
         "ref": "github.raw",
         "requireConsumerSignin": true
